@@ -60,27 +60,30 @@ push(value) {
   this.length++;
 }
 
+
+
 reverseBetween(m, n) {
 
-    if(this.head === null) return;
-
-    const dummyNode = new Node(0);
-    dummyNode.next = this.head;
-    let previous = dummyNode;
+    if(!this.head) return undefined;
+    
+    const dummy_node = new Node(0);
+    dummy_node.next = this.head;
+    let previous = dummy_node;
 
     for(let i = 0; i < m; i++) {
         previous = previous.next;
     }
+
     let current = previous.next;
 
     for(let i = 0; i < n - m; i++) {
-        const temp = current.next;
+        let temp = current.next;
         current.next = temp.next;
         temp.next = previous.next;
         previous.next = temp;
     }
 
-    this.head = dummyNode.next;
+    this.head = dummy_node.next;
 }
 
 }
